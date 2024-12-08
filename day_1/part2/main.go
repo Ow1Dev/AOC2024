@@ -5,13 +5,31 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"slices"
 	"strconv"
 	"strings"
 )
 
-func main() {
-  f, err := os.Open("./day_1/part1/input.txt")
+func main()  {
+  list1, list2 := ReadInput()
+
+  var result int
+  for _, value := range list1 {
+    var times int
+    for _, v := range list2 {
+      if v == value {
+        times = times + 1
+      }
+    }
+
+    result = result + (value * times)
+  }
+
+  fmt.Println(result)
+
+}
+
+func ReadInput() ([]int, []int) {
+  f, err := os.Open("./day_1/part2/input.txt")
   if err != nil {
     log.Fatal(err)
   }
@@ -31,24 +49,5 @@ func main() {
   }
   f.Close()
 
-  slices.Sort(list1) 
-  slices.Sort(list2) 
-
-  var result int 
-
-  for index := range list1{
-    var s int
-
-    if list2[index] > list1[index] {
-      s = list2[index] - list1[index] 
-    } else {
-      s = list1[index] - list2[index] 
-    }
-
-    fmt.Println(s)
-    result = result + s
-  }
-
-  fmt.Println("---")
-  fmt.Println(result)
+  return list1, list2
 }
