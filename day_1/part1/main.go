@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-  f, err := os.Open("./day_1/part1/input.txt")
+  f, err := os.Open("./day_1/input.txt")
   if err != nil {
     log.Fatal(err)
   }
@@ -45,10 +45,8 @@ func main() {
       s = list1[index] - list2[index] 
     }
 
-    fmt.Println(s)
     result = result + s
   }
 
-  fmt.Println("---")
   fmt.Println(result)
 }

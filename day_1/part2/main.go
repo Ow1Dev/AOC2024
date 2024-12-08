@@ -29,7 +29,7 @@ func main()  {
 }
 
 func ReadInput() ([]int, []int) {
-  f, err := os.Open("./day_1/part2/input.txt")
+  f, err := os.Open("./day_1/input.txt")
   if err != nil {
     log.Fatal(err)
   }
