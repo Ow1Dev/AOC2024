@@ -11,42 +11,48 @@ import (
 )
 
 func main() {
-  f, err := os.Open("./day_1/input.txt")
-  if err != nil {
-    log.Fatal(err)
-  }
-  defer f.Close()
+	list1, list2 := ReadInput("./day_1/input.txt")
 
-  scanner := bufio.NewScanner(f)
+	slices.Sort(list1)
+	slices.Sort(list2)
 
-  list1, list2 := make([]int, 0), make([]int, 0)
+	var result int
 
-  for scanner.Scan() {
-    numbers := strings.Split(scanner.Text(), " ")
-    number1, _ := strconv.Atoi(strings.TrimSpace(numbers[0]))
-    number2, _ := strconv.Atoi(strings.TrimSpace(numbers[len(numbers)-1]))
+	for index := range list1 {
+		var s int
 
-    list1 = append(list1, number1)
-    list2 = append(list2, number2)
-  }
-  f.Close()
+		if list2[index] > list1[index] {
+			s = list2[index] - list1[index]
+		} else {
+			s = list1[index] - list2[index]
+		}
 
-  slices.Sort(list1) 
-  slices.Sort(list2) 
+		result = result + s
+	}
 
-  var result int 
+	fmt.Println(result)
+}
 
-  for index := range list1{
-    var s int
+func ReadInput(path string) ([]int, []int) {
+	f, err := os.Open(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
 
-    if list2[index] > list1[index] {
-      s = list2[index] - list1[index] 
-    } else {
-      s = list1[index] - list2[index] 
-    }
+	scanner := bufio.NewScanner(f)
 
-    result = result + s
-  }
+	list1, list2 := make([]int, 0), make([]int, 0)
 
-  fmt.Println(result)
+	for scanner.Scan() {
+		numbers := strings.Split(scanner.Text(), " ")
+		number1, _ := strconv.Atoi(strings.TrimSpace(numbers[0]))
+		number2, _ := strconv.Atoi(strings.TrimSpace(numbers[len(numbers)-1]))
+
+		list1 = append(list1, number1)
+		list2 = append(list2, number2)
+	}
+	f.Close()
+
+	return list1, list2
 }

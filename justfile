@@ -4,3 +4,6 @@ default:
 
 run day part:
     @go run {{day}}/{{part}}/main.go
+
+fmt:
+    @go fmt ./...
