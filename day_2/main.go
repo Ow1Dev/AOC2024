@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/Ow1Dev/AOC2024/day_2/part1"
+	"github.com/Ow1Dev/AOC2024/day_2/part2"
 )
 
 func main() {
@@ -17,17 +18,22 @@ func main() {
     log.Fatal("Something went worng")
   }
 
-  var result int
+  var result1, result2 int
 
   for _, input := range inputs {
     s := part1.Solve(input)
     if s == true {
-      result = result + 1
+      result1++
     }
-    
+
+    s = part2.Solve(input)
+    if s == true {
+      result2 = result2 + 1
+    }
   }
 
-  fmt.Println("result: ", result)
+  fmt.Println("part1 result: ", result1)
+  fmt.Println("part2 result: ", result2)
 }
 
 func getInput(path string) ([][]int, error) {
