@@ -13,52 +13,52 @@ import (
 )
 
 func main() {
-  inputs, err := getInput("./day_2/input.txt")
-  if err != nil {
-    log.Fatal("Something went worng")
-  }
+	inputs, err := getInput("./day_2/input.txt")
+	if err != nil {
+		log.Fatal("Something went worng")
+	}
 
-  var result1, result2 int
+	var result1, result2 int
 
-  for _, input := range inputs {
-    s := part1.Solve(input)
-    if s == true {
-      result1++
-    }
+	for _, input := range inputs {
+		s := part1.Solve(input)
+		if s == true {
+			result1++
+		}
 
-    s = part2.Solve(input)
-    if s == true {
-      result2 = result2 + 1
-    }
-  }
+		s = part2.Solve(input)
+		if s == true {
+			result2 = result2 + 1
+		}
+	}
 
-  fmt.Println("part1 result: ", result1)
-  fmt.Println("part2 result: ", result2)
+	fmt.Println("part1 result: ", result1)
+	fmt.Println("part2 result: ", result2)
 }
 
 func getInput(path string) ([][]int, error) {
 	f, err := os.Open(path)
 	if err != nil {
-    return nil, err
+		return nil, err
 	}
 	defer f.Close()
 
 	scanner := bufio.NewScanner(f)
 
-  list := make([][]int, 0)
+	list := make([][]int, 0)
 
 	for scanner.Scan() {
-    numbers := strings.Split(scanner.Text(), " ")
-    line, err := convertStringsToInts(numbers)
-    if err != nil {
-      return nil, err
-    }
+		numbers := strings.Split(scanner.Text(), " ")
+		line, err := convertStringsToInts(numbers)
+		if err != nil {
+			return nil, err
+		}
 
-    list = append(list, line)
-  }
+		list = append(list, line)
+	}
 
-  return list, nil
-} 
+	return list, nil
+}
 
 func convertStringsToInts(strings []string) ([]int, error) {
 	ints := make([]int, len(strings))

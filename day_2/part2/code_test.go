@@ -3,7 +3,7 @@ package part2
 import "testing"
 
 func TestSolveSolution(t *testing.T) {
-  	tests := []struct {
+	tests := []struct {
 		name     string
 		report   []int
 		expected bool

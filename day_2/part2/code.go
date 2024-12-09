@@ -10,14 +10,14 @@ func Solve(report []int) bool {
 		return true
 	}
 
-  for i := 0; i < len(report); i++ {
-    r := slices.Clone(report)
-    r = append(r[:i], r[i+1:]...)
+	for i := 0; i < len(report); i++ {
+		r := slices.Clone(report)
+		r = append(r[:i], r[i+1:]...)
 
-    if isReportSafe(r) {
-      return true
-    }
-  }
+		if isReportSafe(r) {
+			return true
+		}
+	}
 
 	return false
 }
