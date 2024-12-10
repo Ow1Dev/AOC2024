@@ -7,24 +7,16 @@ import (
 	"os"
 	"strconv"
 	"strings"
+
+	"github.com/Ow1Dev/AOC2024/day_1/part1"
+	"github.com/Ow1Dev/AOC2024/day_1/part2"
 )
 
 func main() {
 	list1, list2 := ReadInput("./day_1/input.txt")
-
-	var result int
-	for _, value := range list1 {
-		var times int
-		for _, v := range list2 {
-			if v == value {
-				times = times + 1
-			}
-		}
-
-		result = result + (value * times)
-	}
-
-	fmt.Println(result)
+  
+  fmt.Println("part1 result: ", part1.Solve(list1, list2))
+  fmt.Println("part2 result: ", part2.Solve(list1, list2))
 }
 
 func ReadInput(path string) ([]int, []int) {
