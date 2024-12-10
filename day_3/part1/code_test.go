@@ -8,6 +8,6 @@ func TestSolveSolution(t *testing.T) {
   anwser := Solve(input)
 
   if anwser != 161 {
-    t.Errorf("The answer it not 161")
+    t.Errorf("got %d, expected %d", anwser, 161)
   }
 }
