@@ -4,7 +4,6 @@ import (
 	"slices"
 )
 
-
 func Solve(list1 []int, list2 []int) int {
 	slices.Sort(list1)
 	slices.Sort(list2)
@@ -22,5 +21,5 @@ func Solve(list1 []int, list2 []int) int {
 		result = result + s
 	}
 
-  return result
+	return result
 }

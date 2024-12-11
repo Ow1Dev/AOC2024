@@ -15,6 +15,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-  fmt.Println("part1 result: ", part1.Solve(string(content)))
-  fmt.Println("part2 result: ", part2.Solve(string(content)))
+	fmt.Println("part1 result: ", part1.Solve(string(content)))
+	fmt.Println("part2 result: ", part2.Solve(string(content)))
 }

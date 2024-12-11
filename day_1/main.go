@@ -14,9 +14,9 @@ import (
 
 func main() {
 	list1, list2 := ReadInput("./day_1/input.txt")
-  
-  fmt.Println("part1 result: ", part1.Solve(list1, list2))
-  fmt.Println("part2 result: ", part2.Solve(list1, list2))
+
+	fmt.Println("part1 result: ", part1.Solve(list1, list2))
+	fmt.Println("part2 result: ", part2.Solve(list1, list2))
 }
 
 func ReadInput(path string) ([]int, []int) {

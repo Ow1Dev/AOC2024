@@ -20,5 +20,5 @@ MXMXAXMASX
 `
 
 	anwser := Solve(input)
-  util.AssertEqual(t, anwser, 18, "value should match")
+	util.AssertEqual(t, anwser, 18, "value should match")
 }
