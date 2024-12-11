@@ -1,6 +1,10 @@
 package part1
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/Ow1Dev/AOC2024/util"
+)
 
 func TestSolveSolution(t *testing.T) {
 	input := `MMMSXXMASM
@@ -16,11 +20,5 @@ MXMXAXMASX
 `
 
 	anwser := Solve(input)
-  assertEqual(t, anwser, 18, "value should match")
-}
-
-func assertEqual(t *testing.T, got, want int, message string) {
-	if got != want {
-		t.Errorf("%s: got %d, expected %d", message, got, want)
-	}
+  util.AssertEqual(t, anwser, 18, "value should match")
 }
