@@ -21,7 +21,7 @@ just run day={{day}}
 Example for Day 1:
 
 ```bash
-just run day=1
+just run day_1
 ```
 
 ### Run Tests for a Given Day
@@ -31,10 +31,10 @@ To run the tests for a specific day, use the following command (replace {{day}} 
 just test day={{day}}
 ```
 
-### Example for Day 1:
+Example for Day 1:
 
 ```bash
-just test day=1
+just test day_1
 ```
 
 ### Run Tests for All Solutions
