@@ -11,7 +11,7 @@ To list all available commands, run:
 just --list
 ```
 
-## Run Solution for a Given Day
+### Run Solution for a Given Day
 To run the solution for a specific day (replace {{day}} with the day number), use the following command:
 
 ```bash
@@ -44,7 +44,7 @@ To run the tests for all solutions, use:
 just test-all
 ```
 
-# Format the Code
+### Format the Code
 To format the Go code in the project, use:
 
 ``` bash
@@ -71,12 +71,12 @@ nix --version
 Enter the development shell:
 
 ```bash
-nix develop
+nix develop .
 ```
 
 This will set up a shell with go and just installed.
 
-Once inside the shell, you can run any of the commands using just (e.g., just run day=1 for Day 1 solution).
+Once inside the shell, you can run any of the commands using `just` (e.g., `just run day_1` for Day 1 solution).
 
 ## Manually Installing Dependencies
 Alternatively, you can install the required dependencies manually:
