@@ -14,6 +14,7 @@ SAXAMASAAA
 MAMMMXMMMM
 MXMXAXMASX
 `
+
 	anwser := Solve(input)
   assertEqual(t, anwser, 18, "value should match")
 }
