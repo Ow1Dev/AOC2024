@@ -1,12 +1,12 @@
 package part1
 
-func Solve(rulesMap map[int][]int, pages [][]int) int {
-  result := 0
+func Solve(rulesSet map[int][]int, pages [][]int) int {
+	result := 0
 
 	for _, page := range pages {
-		if isOrderValid(rulesMap, page) {
-      middle := int(len(page) / 2)
-      result += page[middle]
+		if isOrderValid(rulesSet, page) {
+			middle := int(len(page) / 2)
+			result += page[middle]
 		}
 	}
 
@@ -28,6 +28,3 @@ func isOrderValid(rules map[int][]int, pages []int) bool {
 
 	return true
 }
-
-// 29 53 61 47 75
-// ^
