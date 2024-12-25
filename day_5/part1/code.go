@@ -1,10 +1,10 @@
 package part1
 
-func Solve(rulesSet map[int][]int, pages [][]int) int {
+func Solve(ruleSet map[int][]int, pages [][]int) int {
 	result := 0
 
 	for _, page := range pages {
-		if isOrderValid(rulesSet, page) {
+		if isOrderValid(ruleSet, page) {
 			middle := int(len(page) / 2)
 			result += page[middle]
 		}

@@ -16,8 +16,13 @@ func main() {
 		log.Fatal(err)
 	}
 
-	page_info_str := string(content)
-	page_info_slice := strings.Split(strings.TrimSpace(page_info_str), "\n\n")
+	ruleSet, pages := getInput(string(content))
+
+	fmt.Println("part1 result: ", part1.Solve(ruleSet, pages))
+}
+
+func getInput(content string) (map[int][]int, [][]int) {
+	page_info_slice := strings.Split(strings.TrimSpace(content), "\n\n")
 
 	rulesSet := make(map[int][]int)
 	for _, v := range strings.Split(page_info_slice[0], "\n") {
@@ -50,5 +55,5 @@ func main() {
 		pages = append(pages, page)
 	}
 
-	fmt.Println("part1 result: ", part1.Solve(rulesSet, pages))
+	return rulesSet, pages
 }
