@@ -7,28 +7,13 @@ import (
 )
 
 func TestSolveSolution(t *testing.T) {
-  rules := []Rule{
-    {a: 47, b: 53},
-    {a: 97, b: 13},
-    {a: 97, b: 61},
-    {a: 97, b: 47},
-    {a: 75, b: 29},
-    {a: 61, b: 13},
-    {a: 75, b: 53},
-    {a: 29, b: 13},
-    {a: 97, b: 29},
-    {a: 53, b: 29},
-    {a: 61, b: 53},
-    {a: 97, b: 53},
-    {a: 61, b: 29},
-    {a: 47, b: 13},
-    {a: 75, b: 47},
-    {a: 97, b: 75},
-    {a: 47, b: 61},
-    {a: 75, b: 61},
-    {a: 47, b: 29},
-    {a: 75, b: 13},
-    {a: 53, b: 13},
+  rulesSet := map[int][]int{
+    47: {53, 13, 61, 29},
+    97: {13, 61, 47, 29, 53, 75},
+    75: {29, 53, 47, 61, 13},
+    61: {13, 53, 29},
+    29: {13},
+    53: {29, 13},
   }
   
   pages := [][]int {
@@ -40,7 +25,6 @@ func TestSolveSolution(t *testing.T) {
     {97,13,75,29,47},
   }
 
-	anwser := Solve(rules, pages)
+	anwser := Solve(rulesSet, pages)
 	util.AssertEqual(t, anwser, 143, "value should match")
-
 }

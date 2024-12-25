@@ -1,18 +1,7 @@
 package part1
 
-type Rule struct {
-	a int
-	b int
-}
-
-
-func Solve(rules []Rule, pages [][]int) int {
+func Solve(rulesMap map[int][]int, pages [][]int) int {
   result := 0
-
-	rulesMap := make(map[int][]int)
-	for _, v := range rules {
-		rulesMap[v.a] = append(rulesMap[v.a], v.b)
-	}
 
 	for _, page := range pages {
 		if isOrderValid(rulesMap, page) {
