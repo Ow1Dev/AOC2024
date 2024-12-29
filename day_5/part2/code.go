@@ -61,9 +61,9 @@ func fixPageOrder(pages []int, ruleSet RuleSet) []int {
 	return pages
 }
 
-func indexOf(haystack []int, needle int) int {
-	for i, v := range haystack {
-		if v == needle {
+func indexOf(slice []int, value int) int {
+	for i, v := range slice {
+		if v == value {
 			return i
 		}
 	}
