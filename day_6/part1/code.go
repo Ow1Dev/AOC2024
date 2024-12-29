@@ -11,33 +11,33 @@ const marker = 'X'
 
 func Solve(input string) int {
 	width := getWidth(input) + 2
-  n := strings.Repeat(string(wall), width)
-  for _, line := range strings.Split(input, "\n") {
-    n += string(wall) + line + string(wall) 
-  }
-  n += strings.Repeat(string(wall), width) 
+	n := strings.Repeat(string(wall), width)
+	for _, line := range strings.Split(input, "\n") {
+		n += string(wall) + line + string(wall)
+	}
+	n += strings.Repeat(string(wall), width)
 	m := []rune(n)
 
 	cursor := strings.Index(n, "^")
-	m[cursor] = marker 
+	m[cursor] = marker
 
 	d := 0
 
 	for {
 		nextcursor := getNextCursor(d, cursor, width)
 		if m[nextcursor] == wall {
-      break;
-    }
+			break
+		}
 		if m[nextcursor] == obstacle {
 			d = (d + 1) % 4
 			nextcursor = getNextCursor(d, cursor, width)
 		}
 
-		m[nextcursor] = marker 
+		m[nextcursor] = marker
 		cursor = nextcursor
 	}
 
-  result := strings.Count(string(m), string(marker))
+	result := strings.Count(string(m), string(marker))
 
 	return result
 }
@@ -53,7 +53,7 @@ func getNextCursor(d, cursor, width int) int {
 	case 3:
 		return cursor - 1
 	default:
-    log.Panicln("Direction is not there")
+		log.Panicln("Direction is not there")
 	}
 
 	return -1
