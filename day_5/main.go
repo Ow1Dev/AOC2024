@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/Ow1Dev/AOC2024/day_5/part1"
+	"github.com/Ow1Dev/AOC2024/day_5/part2"
 )
 
 func main() {
@@ -19,6 +20,7 @@ func main() {
 	ruleSet, pages := getInput(string(content))
 
 	fmt.Println("part1 result: ", part1.Solve(ruleSet, pages))
+	fmt.Println("part2 result: ", part2.Solve(ruleSet, pages))
 }
 
 func getInput(content string) (map[int][]int, [][]int) {

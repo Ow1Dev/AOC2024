@@ -1,6 +1,8 @@
 package part2
 
-import "fmt"
+import (
+	"slices"
+)
 
 type RuleSet map[int][]int
 
@@ -9,8 +11,17 @@ func Solve(ruleSet RuleSet, pages [][]int) int {
 
 	for _, page := range pages {
 		if !isOrderValid(ruleSet, page) {
-      fixPages := fixPageOrder(page, ruleSet)
-      fmt.Println(fixPages)
+			fixPages := fixPageOrder(page, ruleSet)
+			for {
+				if isOrderValid(ruleSet, fixPages) {
+					break
+				}
+
+				fixPages = fixPageOrder(fixPages, ruleSet)
+			}
+
+			middle := int(len(fixPages) / 2)
+			result += fixPages[middle]
 		}
 	}
 
@@ -18,20 +29,49 @@ func Solve(ruleSet RuleSet, pages [][]int) int {
 }
 
 func fixPageOrder(pages []int, ruleSet RuleSet) []int {
+	results := []struct {
+		page int
+		rule int
+	}{}
+
 	for i := len(pages) - 1; i >= 0; i-- {
 		r := ruleSet[pages[i]]
 
 		for s := i; s >= 0; s-- {
 			for _, g := range r {
 				if g == pages[s] {
-          // TODO: we need to reverse this order and then do the operations
-          // first we need to get current page number and put it before current reverse this order and then do the operations
-          fmt.Println("swp", pages[i], g)
+					results = append(results, struct {
+						page int
+						rule int
+					}{pages[i], g})
 				}
 			}
 		}
 	}
-  return pages
+
+	slices.Reverse(results)
+
+	for _, v := range results {
+		index := indexOf(pages, v.page)
+		pages = remove(pages, indexOf(pages, v.rule))
+		pages = slices.Insert(pages, index, v.rule)
+
+	}
+
+	return pages
+}
+
+func indexOf(haystack []int, needle int) int {
+	for i, v := range haystack {
+		if v == needle {
+			return i
+		}
+	}
+	return -1
+}
+
+func remove(slice []int, s int) []int {
+	return append(slice[:s], slice[s+1:]...)
 }
 
 func isOrderValid(rules map[int][]int, pages []int) bool {
