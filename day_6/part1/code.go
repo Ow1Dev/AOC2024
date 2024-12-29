@@ -53,7 +53,7 @@ func getNextCursor(d, cursor, width int) int {
 	case 3:
 		return cursor - 1
 	default:
-		log.Fatal("error")
+    log.Panicln("Direction is not there")
 	}
 
 	return -1
